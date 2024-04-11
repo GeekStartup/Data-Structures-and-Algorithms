@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class GCDorHCF {
 
   public static void main(String[] args) {
-    System.out.println("Enter 2 numbers to find GCD");
+    System.out.println("Enter 2 numbers to find GCD/HCF");
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter first number:");
     int num1 = Math.abs(scanner.nextInt());
