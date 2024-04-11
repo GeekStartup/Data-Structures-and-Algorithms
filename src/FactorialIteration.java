@@ -1,15 +1,15 @@
+import java.math.BigInteger;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class FactorialIteration {
 
-  private static int fact(int n) {
-
-    /*for (int i = 1; i <= n; i++) {
-      res *= i;
-    }*/
-    //int res = IntStream.rangeClosed(1, n).reduce(1, (a, b) -> a * b);
-    return IntStream.rangeClosed(1, n).reduce(1, (a, b) -> a * b);
+  private static BigInteger fact(int n) {
+    BigInteger res = BigInteger.ONE;
+    for (int i = 1; i <= n; i++) {
+      res = res.multiply(BigInteger.valueOf(i));
+    }
+    //res = Intstream.rangeClosed(1, n).reduce(1, (a, b) -> a * b);
+    return res;
   }
 
   public static void main(String[] args) {
