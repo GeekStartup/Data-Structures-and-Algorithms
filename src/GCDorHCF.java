@@ -6,14 +6,23 @@ public class GCDorHCF {
     System.out.println("Enter 2 numbers to find GCD");
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter first number:");
-    int num1 = scanner.nextInt();
+    int num1 = Math.abs(scanner.nextInt());
     System.out.println("Enter second number:");
-    int num2 = scanner.nextInt();
+    int num2 = Math.abs(scanner.nextInt());
+    if (num1 == 0 || num2 == 0) {
+      System.out.println("Error! Both numbers should be non-zero.");
+      return;
+    }
     System.out.println(
         "GCD/HCF of " + num1 + " and " + num2 + " using brute force is: " + bruteForceGCDorHCF(num1,
             num2));
     System.out.println(
         "GCD/HCF of " + num1 + " and " + num2 + " using Euclid algorithm is: " + euclidGCDorHCF(
+            num1,
+            num2));
+    System.out.println(
+        "GCD/HCF of " + num1 + " and " + num2 + " using Euclid algorithm is: "
+            + gabrielLameGCDorHCF(
             num1,
             num2));
   }
@@ -46,8 +55,25 @@ public class GCDorHCF {
       }
     }
     long endTime = System.currentTimeMillis();
-    System.out.println("Time taken by Euclid algorithm : " + (endTime - startTime) + " ms");
+    System.out.println("\nTime taken by Euclid algorithm : " + (endTime - startTime) + " ms");
     return num1;
+  }
+
+  //Optimized Euclid Algorithm by Gabriel Lame
+  static int gabrielLameGCDorHCF(int num1, int num2) {
+    long startTime = System.currentTimeMillis();
+    while (num1 != 0 && num2 != 0) {
+      if (num1 > num2) {
+        num1 = num1 % num2;
+      } else {
+        num2 = num2 % num1;
+      }
+    }
+    long endTime = System.currentTimeMillis();
+    System.out.println(
+        "\nTime taken by Gabriel Lame/Optimized Euclid algorithm : " + (endTime - startTime)
+            + " ms");
+    return Math.max(num1, num2);
   }
 
 }
