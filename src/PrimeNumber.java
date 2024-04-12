@@ -92,7 +92,7 @@ public class PrimeNumber {
           "\nTime taken by most efficient method : " + (endTime - startTime) + " ms");
       return false;
     }
-    for (int i = 2; i <= Math.sqrt(num); i += 6) {
+    for (int i = 5; i <= Math.sqrt(num); i += 6) {
       if (num % i == 0) {
         endTime = System.currentTimeMillis();
         System.out.println(
