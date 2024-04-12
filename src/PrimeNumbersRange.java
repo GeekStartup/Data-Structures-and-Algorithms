@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,33 @@ public class PrimeNumbersRange {
     int num = scanner.nextInt();
 
     System.out.println("Prime numbers till " + num + " are: " + primeNumberRangeBruteForce(num));
+    System.out.println("Prime numbers till " + num + " are: " + eratosthenesSieveAlgorithm(num));
+  }
+
+  //O(sqrt(n)log(log(n)))
+  static List<Integer> eratosthenesSieveAlgorithm(int num) {
+    long startTime = System.currentTimeMillis();
+    List<Integer> primeNumbers = new ArrayList<>();
+    boolean[] isPrimes = new boolean[num + 1];
+    Arrays.fill(isPrimes, true);
+    for (int i = 2; i * i <= num; i++) {//Better optimized than for (int i = 2; i <= num; i++)
+      if (isPrimes[i]) {
+        for (int j = i * i; j <= num;
+            j = j + i) {//Better optimized than  for (int j = i * 2; j <= num; j += i)
+          isPrimes[j] = false;
+        }
+      }
+    }
+
+    for (int i = 2; i < isPrimes.length; i++) {
+      if (isPrimes[i]) {
+        primeNumbers.add(i);
+      }
+    }
+    long endTime = System.currentTimeMillis();
+    System.out.println(
+        "\nTime taken by Eratosthenes Sieve Algorithm method : " + (endTime - startTime) + " ms");
+    return primeNumbers;
   }
 
   //O(n * Sqrt(n))
@@ -39,7 +67,7 @@ public class PrimeNumbersRange {
       return false;
     }
     for (int i = 5; i <= Math.sqrt(num); i += 6) {
-      if (num % i == 0) {
+      if (num % i == 0 || num % (i + 2) == 0) {
         return false;
       }
     }
