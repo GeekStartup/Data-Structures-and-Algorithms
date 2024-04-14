@@ -16,6 +16,10 @@ public class BinarySearch {
     System.out.println("Position of " + key + " : " + binarySearch(arr, key));
   }
 
+  //Binary Search - O(log n)
+  //Sort - O(n log n)
+  //Total - O(n log n + log n)
+  //It is always better to use Linear search for unsorted array.
   static int binarySearch(int[] arr, int key) {
     Arrays.sort(arr);
     int low = 0, high = arr.length - 1, mid;
