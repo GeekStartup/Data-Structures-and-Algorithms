@@ -3,6 +3,8 @@ package arrays;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
+//O(log n +  log n + log n) = O(3log n) = O(log n)
 public class BitonicArraySearch {
 
   public static void main(String[] args) {
